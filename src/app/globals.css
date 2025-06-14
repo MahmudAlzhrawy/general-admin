@@ -24,3 +24,7 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+li{
+  @apply text-xl  pt-4 mb-2  list-none px-2 py-2  text-white/60 dark:text-gray-300 hover:bg-gray-100/15 dark:hover:bg-gray-800 transition-colors duration-200 ease-in-out;
+
+}

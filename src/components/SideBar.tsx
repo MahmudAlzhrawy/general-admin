@@ -40,9 +40,9 @@ const handleToggleFour = () => {
                         <TiChevronRightOutline className={`${toggleClinic ?"rotate-90 ":""} duration-500 transform ml-2 inline-block text-sm mr-2 items-center text-white `} />
                     </a>
                     {toggleClinic && 
-                    <>
+                    <div className="transform transition-all duration-700 ease-in-out">
                         <ClinicDropdownList  isOpen={toggleClinic} />
-                    </>
+                    </div>
                     }
                 </li>
                 <li>

@@ -26,8 +26,8 @@ export default function LoginPage() {
                 } else {
                     const response = await log.json()
                     if (response) {
-                        localStorage.setItem('adminToken', response.token)
-                        localStorage.setItem('adminId', JSON.stringify(response.id))
+                        localStorage.setItem('generaladminToken', response.token)
+                        localStorage.setItem('generaladminId', JSON.stringify(response.id))
 
                         if (response.roles === "Admin" ) {
                             Toast.fire({

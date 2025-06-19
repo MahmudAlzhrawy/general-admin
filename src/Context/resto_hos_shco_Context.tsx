@@ -185,7 +185,7 @@ useEffect(() => {
         const token = localStorage.getItem("generaladminToken");
         setAdminToken(token);
         const fetchCities = async()=>{
-        const res =await fetch(`http://citypulse.runasp.net/api/School/ALlcities`,{
+        const res =await fetch(`https://citypulse.runasp.net/api/School/ALlcities`,{
             method:'GET',
         })
         if(res.ok){
@@ -198,7 +198,7 @@ useEffect(() => {
         }
     }
     const fetchRestaurants = async()=>{
-        const res =await fetch(`http://citypulse.runasp.net/api/Restaurant`,{
+        const res =await fetch(`https://citypulse.runasp.net/api/Restaurant`,{
             method:'GET',
         })
         if(res.ok){
@@ -211,7 +211,7 @@ useEffect(() => {
         }
     }
     const fetchAdmins = async()=>{
-        const res =await fetch(`http://citypulse.runasp.net/api/Admin/AllAdmins`,{
+        const res =await fetch(`https://citypulse.runasp.net/api/Admin/AllAdmins`,{
             method:'GET',
             headers:{
                 "Authorization": `Bearer ${adminToken}`,
@@ -232,7 +232,7 @@ useEffect(() => {
     }, [adcounter]);
 useEffect(()=>{
     const fetchRestos = async()=>{
-        const res =await fetch(`http://citypulse.runasp.net/api/AdminInstitution/AllRestaurantsByCityCode?CityCode=${restoFilter}`,{
+        const res =await fetch(`https://citypulse.runasp.net/api/AdminInstitution/AllRestaurantsByCityCode?CityCode=${restoFilter}`,{
             method:'GET',
             headers:{
                 "Authorization": `Bearer ${adminToken}`,
@@ -248,7 +248,7 @@ useEffect(()=>{
         }
     }
     const fetchSchools = async()=>{
-        const res =await fetch(`http://citypulse.runasp.net/api/AdminInstitution/schools-by-city/${schoolFilter}`,{
+        const res =await fetch(`https://citypulse.runasp.net/api/AdminInstitution/schools-by-city/${schoolFilter}`,{
             method:'GET',
             headers:{
                 "Authorization": `Bearer ${adminToken}`,
@@ -264,7 +264,7 @@ useEffect(()=>{
         }
     }
     const fetchHospitals = async()=>{
-        const res =await fetch(`http://citypulse.runasp.net/api/AdminInstitution/hospitals-by-city/${hospitalFilter}`,{
+        const res =await fetch(`https://citypulse.runasp.net/api/AdminInstitution/hospitals-by-city/${hospitalFilter}`,{
             method:'GET',
             headers:{
                 "Authorization": `Bearer ${adminToken}`,
@@ -294,7 +294,7 @@ useEffect(()=>{
     formData.append('CityCode', newRsto.CityCode);
     formData.append('RestaurantDescription', newRsto.RestaurantDescription);
     formData.append('DeliveryFee', newRsto.DeliveryFee.toString()); 
-    const res =await fetch(`http://citypulse.runasp.net/api/AdminInstitution/AddRestaurant`,{
+    const res =await fetch(`https://citypulse.runasp.net/api/AdminInstitution/AddRestaurant`,{
         method:'POST',
         headers:{
                 "Authorization": `Bearer ${adminToken}`,
@@ -328,7 +328,7 @@ useEffect(()=>{
     formData.append('hospitalImage', data.HospitalImage!);
     formData.append('hospitalType', data.HospitalType);
     formData.append('cityCode', data.CityCode);
-    const res =await fetch(`http://citypulse.runasp.net/api/AdminInstitution/add-hospital`,{
+    const res =await fetch(`https://citypulse.runasp.net/api/AdminInstitution/add-hospital`,{
         method:'POST',
         headers:{
                 "Authorization": `Bearer ${adminToken}`,
@@ -362,7 +362,7 @@ useEffect(()=>{
     formData.append('cityCode', newSchool.CityCode);
     formData.append('openingHours', newSchool.OpeningHours);
     formData.append('website', newSchool.Website);
-    const res =await fetch(`http://citypulse.runasp.net/api/AdminInstitution/add-school`,{
+    const res =await fetch(`https://citypulse.runasp.net/api/AdminInstitution/add-school`,{
         method:'POST',
         headers:{
                 "Authorization": `Bearer ${adminToken}`,
@@ -386,7 +386,7 @@ useEffect(()=>{
 
     const removeResto = async(restaurantId: number) => {
         setResto(resto.filter(r => r.restaurantId !== restaurantId));
-        const res =await fetch(`http://citypulse.runasp.net/api/AdminInstitution/DeleteRestaurant/${restaurantId}`,{
+        const res =await fetch(`https://citypulse.runasp.net/api/AdminInstitution/DeleteRestaurant/${restaurantId}`,{
             method:'DELETE',
             headers:{
                 "Authorization": `Bearer ${adminToken}`,
@@ -408,7 +408,7 @@ useEffect(()=>{
 
     const removeHospital = async(hospitalId: number) => {
         setHospital(hospital.filter(h => h.hospitalId !== hospitalId));
-        const res =await fetch(`http://citypulse.runasp.net/api/AdminInstitution/delete-hospital/${hospitalId}`,{
+        const res =await fetch(`https://citypulse.runasp.net/api/AdminInstitution/delete-hospital/${hospitalId}`,{
             method:'DELETE',
             headers:{
                 "Authorization": `Bearer ${adminToken}`,
@@ -428,7 +428,7 @@ useEffect(()=>{
         }
     };
 const AddAdmin =async(admin:AddAdmin)=>{
-    const res = await fetch(`http://citypulse.runasp.net/api/Admin/AssignAdminToService?userId=${admin.userId}&serviceId=${admin.serviceId}&serviceName=${admin.serviceName}`, {
+    const res = await fetch(`https://citypulse.runasp.net/api/Admin/AssignAdminToService?userId=${admin.userId}&serviceId=${admin.serviceId}&serviceName=${admin.serviceName}`, {
                 method: "POST",
                 headers: {
                     "Authorization": `Bearer ${adminToken}`,
@@ -447,7 +447,7 @@ const AddAdmin =async(admin:AddAdmin)=>{
 }
 const removeSchool = async(schoolId: number) => {
         setSchool(school.filter(s => s.schoolId !== schoolId));
-        const res =await fetch(`http://citypulse.runasp.net/api/AdminInstitution/delete-school/${schoolId}`,{
+        const res =await fetch(`https://citypulse.runasp.net/api/AdminInstitution/delete-school/${schoolId}`,{
             method:'DELETE',
             headers:{
                 "Authorization": `Bearer ${adminToken}`,
@@ -468,7 +468,7 @@ const removeSchool = async(schoolId: number) => {
     };
 
 const MakeAdmin=async(adm:MakeAdmen)=>{
-        const res = await fetch(`http://citypulse.runasp.net/api/Admin/MakeAdmin?username=${adm.userName}&adminType=${adm.adminType}`, {
+        const res = await fetch(`https://citypulse.runasp.net/api/Admin/MakeAdmin?username=${adm.userName}&adminType=${adm.adminType}`, {
                 method: "POST",
                 headers: {
                     "Authorization": `Bearer ${adminToken}`,
@@ -486,7 +486,7 @@ const MakeAdmin=async(adm:MakeAdmen)=>{
 }
 const removeAdmin =async(id:number)=>{
     setAdmins(Admins.filter(a => a.id !== id));
-        const res =await fetch(`http://citypulse.runasp.net/api/Admin/DeleteAdminService?id=${id}`,{
+        const res =await fetch(`https://citypulse.runasp.net/api/Admin/DeleteAdminService?id=${id}`,{
             method:'DELETE',
             headers:{
                 "Authorization": `Bearer ${adminToken}`,

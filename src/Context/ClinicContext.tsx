@@ -96,7 +96,7 @@ export const ManageClinicsProvider: React.FC<ManageClinicProviderProps> = ({ chi
     useEffect(() => {
         if (!adminToken) return;
         const fetcheDoctors = async () => {
-            const res = await fetch('http://citypulse.runasp.net/api/AdminClinic/AllDoctors', {
+            const res = await fetch('https://citypulse.runasp.net/api/AdminClinic/AllDoctors', {
                 method: "GET",
                 headers: {
                     "Authorization": `Bearer ${adminToken}`,
@@ -111,7 +111,7 @@ export const ManageClinicsProvider: React.FC<ManageClinicProviderProps> = ({ chi
             }
         }
         const fetchClinics = async () => {
-            const res = await fetch('http://citypulse.runasp.net/api/AdminClinic/AllClinics', {
+            const res = await fetch('https://citypulse.runasp.net/api/AdminClinic/AllClinics', {
                 method: "GET",
                 headers: {
                     "Authorization": `Bearer ${adminToken}`,
@@ -125,7 +125,7 @@ export const ManageClinicsProvider: React.FC<ManageClinicProviderProps> = ({ chi
             }
         };
         const fetchAddresses = async () => {
-            const res = await fetch(`http://citypulse.runasp.net/api/AdminClinic/AllAddressesByCity?city=${filter}`, {
+            const res = await fetch(`https://citypulse.runasp.net/api/AdminClinic/AllAddressesByCity?city=${filter}`, {
                 method: "GET",
                 headers: {
                     "Authorization": `Bearer ${adminToken}`,
@@ -145,7 +145,7 @@ export const ManageClinicsProvider: React.FC<ManageClinicProviderProps> = ({ chi
     },[counter]);
 
     const addAddress = async(address: AddAddress) => {
-        const res = await fetch(`http://citypulse.runasp.net/api/AdminClinic/AddNewDoctorAddress?Address=${address.Address}&city=${address.city}`, {
+        const res = await fetch(`https://citypulse.runasp.net/api/AdminClinic/AddNewDoctorAddress?Address=${address.Address}&city=${address.city}`, {
             method: "POST",
             headers: {
                 "Authorization": `Bearer ${adminToken}`,
@@ -165,7 +165,7 @@ export const ManageClinicsProvider: React.FC<ManageClinicProviderProps> = ({ chi
     const removeAddress = async (addressId: number) => {
         try{
 
-            const res = await fetch(`http://citypulse.runasp.net/api/AdminClinic/DeleteAddress/${addressId}`, {
+            const res = await fetch(`https://citypulse.runasp.net/api/AdminClinic/DeleteAddress/${addressId}`, {
                 method: "DELETE",
                 headers: {
                     "Authorization": `Bearer ${adminToken}`,
@@ -189,7 +189,7 @@ export const ManageClinicsProvider: React.FC<ManageClinicProviderProps> = ({ chi
     };
 
     const addClinic = async(clinic: AddClinic) => {
-        const res = await fetch(`http://citypulse.runasp.net/api/AdminClinic/AddClinic`, {
+        const res = await fetch(`https://citypulse.runasp.net/api/AdminClinic/AddClinic`, {
             method: "POST",
             headers: {
                 "Authorization": `Bearer ${adminToken}`,
@@ -210,7 +210,7 @@ export const ManageClinicsProvider: React.FC<ManageClinicProviderProps> = ({ chi
     const removeClinic = async(clinicId: number) => {
         try {
 
-            const res = await fetch(`http://citypulse.runasp.net/api/AdminClinic/DeleteClinic/${clinicId}`, {
+            const res = await fetch(`https://citypulse.runasp.net/api/AdminClinic/DeleteClinic/${clinicId}`, {
                 method: "DELETE",
                 headers: {
                     "Authorization": `Bearer ${adminToken}`,
@@ -236,7 +236,7 @@ export const ManageClinicsProvider: React.FC<ManageClinicProviderProps> = ({ chi
     const removeDoctor = async (doctorId: number) => {
         try {
 
-            const res = await fetch(`http://citypulse.runasp.net/api/AdminClinic/DeleteDoctor/${doctorId}`, {   
+            const res = await fetch(`https://citypulse.runasp.net/api/AdminClinic/DeleteDoctor/${doctorId}`, {   
                 method: "DELETE",
                 headers: {
                     "Authorization": `Bearer ${adminToken}`,

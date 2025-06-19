@@ -3,7 +3,7 @@
     import { ManageClinicsContext } from "@/Context/ClinicContext";
     import Card from "@/Ui/Card";
     import { useContext, useState } from "react";
-    import { FaClinicMedical, FaTrashAlt } from "react-icons/fa";
+    import { FaClinicMedical} from "react-icons/fa";
 import AddClinic from "./AddClinic";
 
     export default function Clinics() {

@@ -62,7 +62,7 @@ export default function AddSchool({ setOpen }: { setOpen: Dispatch<SetStateActio
                 <form onSubmit={formik.handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {[
                         'schoolName', 'location', 'phoneNumber',
-                        'schoolType', 'schoolDescription',
+                        'schoolDescription',
                         'openingHours', 'website'
                     ].map((field) => (
                         <div key={field}>
@@ -82,6 +82,24 @@ export default function AddSchool({ setOpen }: { setOpen: Dispatch<SetStateActio
                             )}
                         </div>
                     ))}
+                    <div>
+                        <label htmlFor="schoolType" className="block text-sm font-medium text-gray-700 mb-1">School Type</label>
+                        <select
+                            id="schoolType"
+                            name="schoolType"
+                            onChange={formik.handleChange}
+                            value={formik.values.schoolType}
+                            className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${formik.touched.cityCode && formik.errors.cityCode ? 'border-red-500' : 'border-gray-300'}`}
+                        >
+                                <option value="">All Types</option>
+                                <option value="Private">Private</option>
+                                <option value="Government">Government</option>
+                                <option value="International">International</option>
+                        </select>
+                        {formik.touched.schoolType&& formik.errors.schoolType && (
+                            <p className="text-red-500 text-xs mt-1">{formik.errors.schoolType}</p>
+                        )}
+                    </div>
                     <div>
                         <label htmlFor="CityCode" className="block text-sm font-medium text-gray-700 mb-1">CityCode</label>
                         <select

@@ -1,7 +1,7 @@
     "use client";
     import { useFormik } from "formik";
     import * as Yup from "yup";
-    import { useContext,useState } from "react";
+    import { useContext,useEffect,useState } from "react";
     import { RestoHosShcoContext } from "@/Context/resto_hos_shco_Context";
 import { ManageClinicsContext } from "@/Context/ClinicContext";
 
@@ -13,6 +13,9 @@ import { ManageClinicsContext } from "@/Context/ClinicContext";
     const { AddAdmin,Restaurants } = useContext(RestoHosShcoContext);
     const{clinics}=useContext(ManageClinicsContext)
     const [adminToken, setAdminToken] = useState<string | null>(localStorage.getItem("generaladminToken"));
+    useEffect(()=>{
+        setAdminToken(localStorage.getItem("generaladminToken"));
+    },[])
     const formik = useFormik({
         initialValues: {
             username: "",
@@ -79,6 +82,7 @@ import { ManageClinicsContext } from "@/Context/ClinicContext";
                             formik.setFieldTouched("username", true); // 🔸 ensure touched
                             formik.setFieldError("username", "User not found");
                             formik.setFieldValue("userId", "");
+                            console.log(err)
                         }
                         }}
                 value={formik.values.username}

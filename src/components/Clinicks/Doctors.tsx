@@ -35,7 +35,7 @@ const [open, setOpen] = useState(false);
                             <Card key={doctorId} className="bg-white shadow-lg rounded-xl p-4 hover:shadow-xl transition-shadow duration-300">
                                 <li className="list-none flex flex-col items-center text-center">
                                     <img
-                                        src={`http://citypulse.runasp.net${profileImage}`}
+                                        src={`https://citypulse.runasp.net${profileImage}`}
                                         alt={doctorName}
                                         className="w-24 h-24 object-cover rounded-full mb-4 border-2 border-blue-300"
                                     />

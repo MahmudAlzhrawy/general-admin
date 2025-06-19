@@ -68,7 +68,7 @@
                 <option value="">Select Admin Type</option>
                 <option value="Admin">Admin</option>
                 <option value="RestaurantStaff">RestaurantStaff</option>
-                <option value="ClinicAdmin">ClinicAdmin</option>
+                <option value="ClinicAdmin">ClinicStaff</option>
             </select>
             {formik.touched.adminType && formik.errors.adminType && (
                 <p className="text-red-500 text-sm mt-1">{formik.errors.adminType}</p>

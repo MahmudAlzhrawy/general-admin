@@ -38,7 +38,7 @@ export default function Schools() {
                             <Card key={schoolId} className="bg-white shadow-lg rounded-xl p-4 hover:shadow-xl transition-shadow duration-300">
                                 <li className="list-none flex flex-col items-center text-center">
                                     <img
-                                        src={`http://citypulse.runasp.net/images/Schools/${schoolImage}`}
+                                        src={`https://citypulse.runasp.net/images/Schools/${schoolImage}`}
                                         alt={schoolName}
                                         className="w-24 h-24 object-cover rounded-full mb-4 border-2 border-blue-300"
                                     />

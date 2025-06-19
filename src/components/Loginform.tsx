@@ -14,7 +14,7 @@ export default function LoginPage() {
         }),
         onSubmit: async (values) => {
             try {
-                const log = await fetch(`http://citypulse.runasp.net/api/User/login`, {
+                const log = await fetch(`https://citypulse.runasp.net/api/User/login`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

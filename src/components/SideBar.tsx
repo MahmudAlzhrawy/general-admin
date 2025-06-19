@@ -10,9 +10,19 @@ import { TiChevronRightOutline } from "react-icons/ti";
 import ClinicDropdownList from "@/components/Clinicks/ClinicDropDownList"; 
 import { useContext, useState } from "react";
 import { RestoHosShcoContext } from "@/Context/resto_hos_shco_Context";
+import { ManageClinicsContext } from "@/Context/ClinicContext";
 export default function SideBar() {
 const[toggleClinic, setToggleClinic] = useState(false);
-const{setShowResto,setShowHospitals,setShowSchools,setShowAdminSettings,showHospitals,showResto,showSchools,showAdminSettings}=useContext(RestoHosShcoContext)
+const{
+    setShowResto,setShowHospitals,setShowSchools,setShowAdminSettings,
+    showHospitals,showResto,showSchools,showAdminSettings,
+
+}=useContext(RestoHosShcoContext)
+ const {
+    setShowClinic,
+    setShowDoctor,
+    setShowAddress,
+  }=useContext(ManageClinicsContext);
 const handleToggleClinic = () => {
     setToggleClinic(!toggleClinic);
     setShowResto(false);
@@ -48,6 +58,9 @@ const handleToggleClinic = () => {
                         setShowHospitals(false)
                         setShowAdminSettings(false)
                         setToggleClinic(false)
+                        setShowClinic(false)
+                        setShowDoctor(false)
+                        setShowAddress(false)
                     }
                         } >
                         <span className={`${showResto &&"text-black font-bold"}`}>
@@ -62,6 +75,9 @@ const handleToggleClinic = () => {
                         setShowHospitals(false)
                         setToggleClinic(false)
                         setShowAdminSettings(false)
+                         setShowClinic(false)
+                        setShowDoctor(false)
+                        setShowAddress(false)
                 }
                         }  >
                         <span className={`${showSchools &&"text-black font-bold"}`}>
@@ -78,6 +94,9 @@ const handleToggleClinic = () => {
                         setShowResto(false)
                         setToggleClinic(false)
                         setShowAdminSettings(false)
+                         setShowClinic(false)
+                        setShowDoctor(false)
+                        setShowAddress(false)
                     }
                         } >
                         <span className={`${showHospitals &&"text-black font-bold"}`}>
@@ -102,6 +121,9 @@ const handleToggleClinic = () => {
                         setShowResto(false)
                         setToggleClinic(false)
                         setShowAdminSettings(true)
+                         setShowClinic(false)
+                        setShowDoctor(false)
+                        setShowAddress(false)
                     }}
                     >
                         <span>

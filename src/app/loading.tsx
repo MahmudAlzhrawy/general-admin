@@ -1,4 +1,3 @@
-import { text } from "stream/consumers";
 
     interface LoadingProps {
         tex:string

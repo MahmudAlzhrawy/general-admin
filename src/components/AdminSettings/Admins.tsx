@@ -1,5 +1,5 @@
 "use client";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { RestoHosShcoContext } from "@/Context/resto_hos_shco_Context"; // عدله حسب السياق المناسب
 import Card from "@/Ui/Card";
 import Loading from "@/app/loading";

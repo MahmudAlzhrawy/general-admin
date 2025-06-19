@@ -33,7 +33,7 @@ export default function AddDoctors({ setOpen }:{setOpen:Dispatch<SetStateAction<
             formData.append('AcademicDegree', values.AcademicDegree);
             formData.append('Description', values.Description);
             formData.append('ProfileImage', values.ProfileImage!);
-            const res =await fetch(`http://citypulse.runasp.net/api/AdminClinic/AddNewDoctor`,{
+            const res =await fetch(`https://citypulse.runasp.net/api/AdminClinic/AddNewDoctor`,{
                 method: 'POST',
                 headers:{
                     'Authorization': `Bearer ${localStorage.getItem('generaladminToken')}`,

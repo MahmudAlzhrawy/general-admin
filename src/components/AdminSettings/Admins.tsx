@@ -86,8 +86,8 @@ export default function Admins() {
                 }}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
             >
-                <option value="RestuarantOwner">Restuarant Owner</option>
-                <option value="ClinicAdmin">Clinic Admin</option>
+                <option value="RestuarantStaff">Restuarant Owner</option>
+                <option value="ClinicStaff">Clinic Admin</option>
             </select>
         </div>
         </div>

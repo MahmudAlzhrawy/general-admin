@@ -60,28 +60,113 @@ export default function AddSchool({ setOpen }: { setOpen: Dispatch<SetStateActio
                 <h1 className="text-3xl font-bold text-center mb-6 text-blue-800">Add New School</h1>
 
                 <form onSubmit={formik.handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {[
-                        'schoolName', 'location', 'phoneNumber',
-                        'schoolDescription',
-                        'openingHours', 'website'
-                    ].map((field) => (
-                        <div key={field}>
-                            <label htmlFor={field} className="block text-sm font-medium text-gray-700">
-                                {field.replace(/([A-Z])/g, ' $1')}
-                            </label>
-                            <input
-                                type="text"
-                                id={field}
-                                name={field}
-                                onChange={formik.handleChange}
-                                value={(formik.values as any)[field]}
-                                className={`mt-1 block w-full p-2 border ${(formik.errors as any)[field] ? 'border-red-500' : 'border-gray-300'} rounded-md`}
-                            />
-                            {(formik.errors as any)[field] && (
-                                <p className="text-red-500 text-xs mt-1">{(formik.errors as any)[field]}</p>
-                            )}
-                        </div>
-                    ))}
+                    {/* School Name */}
+                    <div>
+                        <label htmlFor="schoolName" className="block text-sm font-medium text-gray-700">
+                        School Name
+                        </label>
+                        <input
+                        type="text"
+                        id="schoolName"
+                        name="schoolName"
+                        onChange={formik.handleChange}
+                        value={formik.values.schoolName}
+                        className={`mt-1 block w-full p-2 border ${formik.errors.schoolName ? 'border-red-500' : 'border-gray-300'} rounded-md`}
+                        />
+                        {formik.errors.schoolName && (
+                        <p className="text-red-500 text-xs mt-1">{formik.errors.schoolName}</p>
+                        )}
+                    </div>
+
+                    {/* Location */}
+                    <div>
+                        <label htmlFor="location" className="block text-sm font-medium text-gray-700">
+                        Location
+                        </label>
+                        <input
+                        type="text"
+                        id="location"
+                        name="location"
+                        onChange={formik.handleChange}
+                        value={formik.values.location}
+                        className={`mt-1 block w-full p-2 border ${formik.errors.location ? 'border-red-500' : 'border-gray-300'} rounded-md`}
+                        />
+                        {formik.errors.location && (
+                        <p className="text-red-500 text-xs mt-1">{formik.errors.location}</p>
+                        )}
+                    </div>
+
+                    {/* Phone Number */}
+                    <div>
+                        <label htmlFor="phoneNumber" className="block text-sm font-medium text-gray-700">
+                        Phone Number
+                        </label>
+                        <input
+                        type="text"
+                        id="phoneNumber"
+                        name="phoneNumber"
+                        onChange={formik.handleChange}
+                        value={formik.values.phoneNumber}
+                        className={`mt-1 block w-full p-2 border ${formik.errors.phoneNumber ? 'border-red-500' : 'border-gray-300'} rounded-md`}
+                        />
+                        {formik.errors.phoneNumber && (
+                        <p className="text-red-500 text-xs mt-1">{formik.errors.phoneNumber}</p>
+                        )}
+                    </div>
+
+                    {/* School Description */}
+                    <div>
+                        <label htmlFor="schoolDescription" className="block text-sm font-medium text-gray-700">
+                        School Description
+                        </label>
+                        <input
+                        type="text"
+                        id="schoolDescription"
+                        name="schoolDescription"
+                        onChange={formik.handleChange}
+                        value={formik.values.schoolDescription}
+                        className={`mt-1 block w-full p-2 border ${formik.errors.schoolDescription ? 'border-red-500' : 'border-gray-300'} rounded-md`}
+                        />
+                        {formik.errors.schoolDescription && (
+                        <p className="text-red-500 text-xs mt-1">{formik.errors.schoolDescription}</p>
+                        )}
+                    </div>
+
+                    {/* Opening Hours */}
+                    <div>
+                        <label htmlFor="openingHours" className="block text-sm font-medium text-gray-700">
+                        Opening Hours
+                        </label>
+                        <input
+                        type="text"
+                        id="openingHours"
+                        name="openingHours"
+                        onChange={formik.handleChange}
+                        value={formik.values.openingHours}
+                        className={`mt-1 block w-full p-2 border ${formik.errors.openingHours ? 'border-red-500' : 'border-gray-300'} rounded-md`}
+                        />
+                        {formik.errors.openingHours && (
+                        <p className="text-red-500 text-xs mt-1">{formik.errors.openingHours}</p>
+                        )}
+                    </div>
+
+                    {/* Website */}
+                    <div>
+                        <label htmlFor="website" className="block text-sm font-medium text-gray-700">
+                        Website
+                        </label>
+                        <input
+                        type="text"
+                        id="website"
+                        name="website"
+                        onChange={formik.handleChange}
+                        value={formik.values.website}
+                        className={`mt-1 block w-full p-2 border ${formik.errors.website ? 'border-red-500' : 'border-gray-300'} rounded-md`}
+                        />
+                        {formik.errors.website && (
+                        <p className="text-red-500 text-xs mt-1">{formik.errors.website}</p>
+                        )}
+                    </div>
                     <div>
                         <label htmlFor="schoolType" className="block text-sm font-medium text-gray-700 mb-1">School Type</label>
                         <select

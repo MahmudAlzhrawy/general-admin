@@ -11,6 +11,7 @@ import ClinicDropdownList from "@/components/Clinicks/ClinicDropDownList";
 import { useContext, useState } from "react";
 import { RestoHosShcoContext } from "@/Context/resto_hos_shco_Context";
 import { ManageClinicsContext } from "@/Context/ClinicContext";
+import Link from "next/link";
 export default function SideBar() {
 const[toggleClinic, setToggleClinic] = useState(false);
 const{
@@ -121,7 +122,7 @@ const handleToggleClinic = () => {
                         setShowResto(false)
                         setToggleClinic(false)
                         setShowAdminSettings(true)
-                         setShowClinic(false)
+                        setShowClinic(false)
                         setShowDoctor(false)
                         setShowAddress(false)
                     }}
@@ -131,12 +132,12 @@ const handleToggleClinic = () => {
                         </span>
                         Settings
                     </a>
-                    <a href="/">
+                    <Link href="/">
                         <span>
                             <FiLogOut className="inline-block text-2xl mr-2 text-white" />
                         </span>
                         Logout
-                    </a>
+                    </Link>
                 </div>
         </div>
     );

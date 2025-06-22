@@ -60,58 +60,134 @@ export default function AddRestaurant({ setOpen }: { setOpen: Dispatch<SetStateA
                 <h1 className="text-3xl font-bold text-center mb-6 text-blue-800">Add New Restaurant</h1>
 
                 <form onSubmit={formik.handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {[
-                        { name: 'restaurantName', label: 'Restaurant Name' },
-                        { name: 'location', label: 'Location' },
-                        { name: 'phoneNumber', label: 'Phone Number' },
-                        { name: 'cusineType', label: 'Cuisine Type' },
-                        { name: 'status', label: 'Status' },
-                        { name: 'restaurantDescription', label: 'Description', type: 'textarea' },
-                        { name: 'deliveryFee', label: 'Delivery Fee', type: 'number' }
-                    ].map(({ name, label, type = 'text' }) => (
-                        <div key={name}>
-                            <label htmlFor={name} className="block text-sm font-medium text-gray-700">{label}</label>
-                            {type === 'textarea' ? (
-                                <textarea
-                                    id={name}
-                                    name={name}
-                                    onChange={formik.handleChange}
-                                    value={(formik.values as any)[name]}
-                                    className={`mt-1 block w-full p-2 border ${(formik.errors as any)[name] ? 'border-red-500' : 'border-gray-300'} rounded-md`}
-                                />
-                            ) : (
-                                <input
-                                    type={type}
-                                    id={name}
-                                    name={name}
-                                    onChange={formik.handleChange}
-                                    value={(formik.values as any)[name]}
-                                    className={`mt-1 block w-full p-2 border ${(formik.errors as any)[name] ? 'border-red-500' : 'border-gray-300'} rounded-md`}
-                                />
-                            )}
-                            {(formik.errors as any)[name] && <p className="text-red-500 text-xs mt-1">{(formik.errors as any)[name]}</p>}
-                        </div>
-                    ))}
-                        <div>
-                        <label htmlFor="CityCode" className="block text-sm font-medium text-gray-700 mb-1">CityCode</label>
-                        <select
-                            id="CityCode"
-                            name="cityCode"
-                            onChange={formik.handleChange}
-                            value={formik.values.cityCode}
-                            className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${formik.touched.cityCode && formik.errors.cityCode ? 'border-red-500' : 'border-gray-300'}`}
-                        >
-                            <option value="">Select an City</option>
-                            {Cities.map((city) => (
-                                <option key={city.cityCode} value={city.cityCode}>
-                                    {city.cityName} 
-                                </option>
-                            ))}
-                        </select>
-                        {formik.touched.cityCode&& formik.errors.cityCode && (
-                            <p className="text-red-500 text-xs mt-1">{formik.errors.cityCode}</p>
-                        )}
-                    </div>
+                    <div>
+            <label htmlFor="restaurantName" className="block text-sm font-medium text-gray-700">
+            Restaurant Name
+            </label>
+            <input
+            id="restaurantName"
+            name="restaurantName"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.restaurantName}
+            className={`mt-1 block w-full p-2 border ${formik.errors.restaurantName ? 'border-red-500' : 'border-gray-300'} rounded-md`}
+            />
+            {formik.errors.restaurantName && <p className="text-red-500 text-xs mt-1">{formik.errors.restaurantName}</p>}
+        </div>
+
+        {/* Location */}
+        <div>
+            <label htmlFor="location" className="block text-sm font-medium text-gray-700">
+            Location
+            </label>
+            <input
+            id="location"
+            name="location"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.location}
+            className={`mt-1 block w-full p-2 border ${formik.errors.location ? 'border-red-500' : 'border-gray-300'} rounded-md`}
+            />
+            {formik.errors.location && <p className="text-red-500 text-xs mt-1">{formik.errors.location}</p>}
+        </div>
+
+        {/* Phone Number */}
+        <div>
+            <label htmlFor="phoneNumber" className="block text-sm font-medium text-gray-700">
+            Phone Number
+            </label>
+            <input
+            id="phoneNumber"
+            name="phoneNumber"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.phoneNumber}
+            className={`mt-1 block w-full p-2 border ${formik.errors.phoneNumber ? 'border-red-500' : 'border-gray-300'} rounded-md`}
+            />
+            {formik.errors.phoneNumber && <p className="text-red-500 text-xs mt-1">{formik.errors.phoneNumber}</p>}
+        </div>
+
+        {/* Cuisine Type */}
+        <div>
+            <label htmlFor="cusineType" className="block text-sm font-medium text-gray-700">
+            Cuisine Type
+            </label>
+            <input
+            id="cusineType"
+            name="cusineType"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.cusineType}
+            className={`mt-1 block w-full p-2 border ${formik.errors.cusineType ? 'border-red-500' : 'border-gray-300'} rounded-md`}
+            />
+            {formik.errors.cusineType && <p className="text-red-500 text-xs mt-1">{formik.errors.cusineType}</p>}
+        </div>
+        {/* Status */}
+        <div>
+            <label htmlFor="status" className="block text-sm font-medium text-gray-700">
+            Status
+            </label>
+            <input
+            id="status"
+            name="status"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.status}
+            className={`mt-1 block w-full p-2 border ${formik.errors.status ? 'border-red-500' : 'border-gray-300'} rounded-md`}
+            />
+            {formik.errors.status && <p className="text-red-500 text-xs mt-1">{formik.errors.status}</p>}
+        </div>
+
+        {/* Description */}
+        <div>
+            <label htmlFor="restaurantDescription" className="block text-sm font-medium text-gray-700">
+            Description
+            </label>
+            <textarea
+            id="restaurantDescription"
+            name="restaurantDescription"
+            onChange={formik.handleChange}
+            value={formik.values.restaurantDescription}
+            className={`mt-1 block w-full p-2 border ${formik.errors.restaurantDescription ? 'border-red-500' : 'border-gray-300'} rounded-md`}
+            />
+            {formik.errors.restaurantDescription && <p className="text-red-500 text-xs mt-1">{formik.errors.restaurantDescription}</p>}
+        </div>
+
+        {/* Delivery Fee */}
+        <div>
+            <label htmlFor="deliveryFee" className="block text-sm font-medium text-gray-700">
+            Delivery Fee
+            </label>
+            <input
+            id="deliveryFee"
+            name="deliveryFee"
+            type="number"
+            onChange={formik.handleChange}
+            value={formik.values.deliveryFee}
+            className={`mt-1 block w-full p-2 border ${formik.errors.deliveryFee ? 'border-red-500' : 'border-gray-300'} rounded-md`}
+            />
+            {formik.errors.deliveryFee && <p className="text-red-500 text-xs mt-1">{formik.errors.deliveryFee}</p>}
+        </div>
+                    <div>
+                    <label htmlFor="CityCode" className="block text-sm font-medium text-gray-700 mb-1">CityCode</label>
+                    <select
+                        id="CityCode"
+                        name="cityCode"
+                        onChange={formik.handleChange}
+                        value={formik.values.cityCode}
+                        className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${formik.touched.cityCode && formik.errors.cityCode ? 'border-red-500' : 'border-gray-300'}`}
+                    >
+                        <option value="">Select an City</option>
+                        {Cities.map((city) => (
+                            <option key={city.cityCode} value={city.cityCode}>
+                                {city.cityName} 
+                            </option>
+                        ))}
+                    </select>
+                    {formik.touched.cityCode&& formik.errors.cityCode && (
+                        <p className="text-red-500 text-xs mt-1">{formik.errors.cityCode}</p>
+                    )}
+                </div>
                     {/* Restaurant Image */}
                     <div className="md:col-span-2">
                         <label htmlFor="restaurantImage" className="block text-sm font-medium text-gray-700">Restaurant Image</label>

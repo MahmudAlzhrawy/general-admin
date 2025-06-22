@@ -62,7 +62,7 @@ import { ManageClinicsContext } from "@/Context/ClinicContext";
                         formik.handleBlur(e);
                         const username = formik.values.username;
                         try {
-                            const res = await fetch(`http://citypulse.runasp.net/api/Admin/GetUserByUsername?username=${username}`, {
+                            const res = await fetch(`https://citypulse.runasp.net/api/Admin/GetUserByUsername?username=${username}`, {
                             method: "GET",
                             headers: {
                                 Authorization: `Bearer ${adminToken}`,
@@ -178,8 +178,8 @@ import { ManageClinicsContext } from "@/Context/ClinicContext";
                 className="mt-1 w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
                 <option value={' '}>Select Service Name</option>
-                <option value="RestuarantOwner">Restuarant Owner</option>
-                <option value="ClinicAdmin">Clinic Admin</option>
+                <option value="RestuarantStaff">Restuarant Owner</option>
+                <option value="ClinicStaff">Clinic Admin</option>
             </select>
             {formik.touched.serviceName && formik.errors.serviceName && (
                 <p className="text-red-500 text-sm mt-1">{formik.errors.serviceName}</p>

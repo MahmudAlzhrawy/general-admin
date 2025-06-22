@@ -1,3 +1,4 @@
+"use client"
 import Content from "@/components/PageContent/Content";
 import SideBar from "@/components/SideBar";
 import { ManageClinicsProvider } from "@/Context/ClinicContext";

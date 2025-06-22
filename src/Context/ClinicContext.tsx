@@ -87,14 +87,16 @@ export const ManageClinicsProvider: React.FC<ManageClinicProviderProps> = ({ chi
     const [showDoctor, setShowDoctor] = useState(false);
     const [showAddress, setShowAddress] = useState(false);
     const [counter, setCounter] = useState(0);
-    const [adminToken, setAdminToken] = useState<string | null>(localStorage.getItem("generaladminToken"));
+    const [adminToken, setAdminToken] = useState<string | null>(null);
     const [filter, setAddressFilter] = useState<string>("Assiut");
     useEffect(() => {
         const token = localStorage.getItem("generaladminToken");
         setAdminToken(token);
     }, []);
     useEffect(() => {
-        if (!adminToken) return;
+        if(!adminToken){
+            return console.log("token not brovided !")
+        }
         const fetcheDoctors = async () => {
             const res = await fetch('https://citypulse.runasp.net/api/AdminClinic/AllDoctors', {
                 method: "GET",
@@ -145,6 +147,9 @@ export const ManageClinicsProvider: React.FC<ManageClinicProviderProps> = ({ chi
     },[counter]);
 
     const addAddress = async(address: AddAddress) => {
+        if(!adminToken){
+            return console.log("token not brovided !")
+        }
         const res = await fetch(`https://citypulse.runasp.net/api/AdminClinic/AddNewDoctorAddress?Address=${address.Address}&city=${address.city}`, {
             method: "POST",
             headers: {
@@ -163,6 +168,9 @@ export const ManageClinicsProvider: React.FC<ManageClinicProviderProps> = ({ chi
     };
 
     const removeAddress = async (addressId: number) => {
+        if(!adminToken){
+            return console.log("token not brovided !")
+        }
         try{
 
             const res = await fetch(`https://citypulse.runasp.net/api/AdminClinic/DeleteAddress/${addressId}`, {
@@ -185,10 +193,14 @@ export const ManageClinicsProvider: React.FC<ManageClinicProviderProps> = ({ chi
                 icon: "warning",
                 title: "Failed to remove address - it may be related to a clinic"
             });
+            console.log(error)
         }
     };
 
     const addClinic = async(clinic: AddClinic) => {
+        if(!adminToken){
+            return console.log("token not brovided !")
+        }
         const res = await fetch(`https://citypulse.runasp.net/api/AdminClinic/AddClinic`, {
             method: "POST",
             headers: {
@@ -208,6 +220,9 @@ export const ManageClinicsProvider: React.FC<ManageClinicProviderProps> = ({ chi
     };
 
     const removeClinic = async(clinicId: number) => {
+        if(!adminToken){
+            return console.log("token not brovided !")
+        }
         try {
 
             const res = await fetch(`https://citypulse.runasp.net/api/AdminClinic/DeleteClinic/${clinicId}`, {
@@ -231,9 +246,14 @@ export const ManageClinicsProvider: React.FC<ManageClinicProviderProps> = ({ chi
                 icon: "error",
                 title: "Failed to remove clinic"
             });
+                        console.log(error)
+
         }
     };
     const removeDoctor = async (doctorId: number) => {
+        if(!adminToken){
+            return console.log("token not brovided !")
+        }
         try {
 
             const res = await fetch(`https://citypulse.runasp.net/api/AdminClinic/DeleteDoctor/${doctorId}`, {   
@@ -259,6 +279,7 @@ export const ManageClinicsProvider: React.FC<ManageClinicProviderProps> = ({ chi
                 icon: "error",
                 title: "Doctor may be related with clinic"
             });
+                        console.log(error)
         }
     };
 

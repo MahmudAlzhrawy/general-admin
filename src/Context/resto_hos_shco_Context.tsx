@@ -180,10 +180,10 @@ export const RestoHosShcoProvider: React.FC<RestoHosShcoProviderProps> = ({ chil
     const[Admins,setAdmins]=useState<Admin[]>([]);
     const[showAdminSettings,setShowAdminSettings]=useState<boolean>(false)
     const [adcounter, setAdCounter] =useState<number>(0);
-    const [adminToken, setAdminToken] = useState<string | null>(localStorage.getItem("generaladminToken"));
+    const [adminToken, setAdminToken] = useState<string | null>(null);
 useEffect(() => {
         const token = localStorage.getItem("generaladminToken");
-        setAdminToken(token);
+        setAdminToken(token); 
         const fetchCities = async()=>{
         const res =await fetch(`https://citypulse.runasp.net/api/School/ALlcities`,{
             method:'GET',
@@ -211,6 +211,9 @@ useEffect(() => {
         }
     }
     const fetchAdmins = async()=>{
+        if(!adminToken){
+            return console.log("token not brovided !")
+        }
         const res =await fetch(`https://citypulse.runasp.net/api/Admin/AllAdmins`,{
             method:'GET',
             headers:{
@@ -231,6 +234,9 @@ useEffect(() => {
     fetchCities();
     }, [adcounter]);
 useEffect(()=>{
+    if(!adminToken){
+            return console.log("token not brovided !")
+        }
     const fetchRestos = async()=>{
         const res =await fetch(`https://citypulse.runasp.net/api/AdminInstitution/AllRestaurantsByCityCode?CityCode=${restoFilter}`,{
             method:'GET',
@@ -284,6 +290,9 @@ useEffect(()=>{
     fetchSchools();
 },[counter])
     const AddResto = async(newRsto: AddResto) => {
+         if(!adminToken){
+            return console.log("token not brovided !")
+        }
     const formData = new FormData();
     formData.append('RestaurantName', newRsto.RestaurantName);
     formData.append('Location', newRsto.Location);
@@ -317,6 +326,9 @@ useEffect(()=>{
     };
 
     const AddHospital = async(data: AddHospital) => {
+        if(!adminToken){
+            return console.log("token not brovided !")
+        }
     const formData = new FormData();
     
     formData.append('hospitalName', data.HospitalName);
@@ -352,6 +364,9 @@ useEffect(()=>{
     };
 
     const AddSchool =async (newSchool: AddSchool) => {
+        if(!adminToken){
+            return console.log("token not brovided !")
+        }
     const formData= new FormData();
     formData.append('schoolName', newSchool.SchoolName);
     formData.append('location', newSchool.Location);
@@ -385,6 +400,9 @@ useEffect(()=>{
     };
 
     const removeResto = async(restaurantId: number) => {
+        if(!adminToken){
+            return console.log("token not brovided !")
+        }
         setResto(resto.filter(r => r.restaurantId !== restaurantId));
         const res =await fetch(`https://citypulse.runasp.net/api/AdminInstitution/DeleteRestaurant/${restaurantId}`,{
             method:'DELETE',
@@ -407,6 +425,9 @@ useEffect(()=>{
     };
 
     const removeHospital = async(hospitalId: number) => {
+        if(!adminToken){
+            return console.log("token not brovided !")
+        }
         setHospital(hospital.filter(h => h.hospitalId !== hospitalId));
         const res =await fetch(`https://citypulse.runasp.net/api/AdminInstitution/delete-hospital/${hospitalId}`,{
             method:'DELETE',
@@ -428,6 +449,9 @@ useEffect(()=>{
         }
     };
 const AddAdmin =async(admin:AddAdmin)=>{
+    if(!adminToken){
+            return console.log("token not brovided !")
+        }
     const res = await fetch(`https://citypulse.runasp.net/api/Admin/AssignAdminToService?userId=${admin.userId}&serviceId=${admin.serviceId}&serviceName=${admin.serviceName}`, {
                 method: "POST",
                 headers: {
@@ -446,6 +470,9 @@ const AddAdmin =async(admin:AddAdmin)=>{
             }
 }
 const removeSchool = async(schoolId: number) => {
+    if(!adminToken){
+            return console.log("token not brovided !")
+        }
         setSchool(school.filter(s => s.schoolId !== schoolId));
         const res =await fetch(`https://citypulse.runasp.net/api/AdminInstitution/delete-school/${schoolId}`,{
             method:'DELETE',
@@ -468,6 +495,9 @@ const removeSchool = async(schoolId: number) => {
     };
 
 const MakeAdmin=async(adm:MakeAdmen)=>{
+       if(!adminToken){
+            return console.log("token not brovided !")
+        }
         const res = await fetch(`https://citypulse.runasp.net/api/Admin/MakeAdmin?username=${adm.userName}&adminType=${adm.adminType}`, {
                 method: "POST",
                 headers: {
@@ -485,6 +515,9 @@ const MakeAdmin=async(adm:MakeAdmen)=>{
             }
 }
 const removeAdmin =async(id:number)=>{
+       if(!adminToken){
+            return console.log("token not brovided !")
+        }
     setAdmins(Admins.filter(a => a.id !== id));
         const res =await fetch(`https://citypulse.runasp.net/api/Admin/DeleteAdminService?id=${id}`,{
             method:'DELETE',

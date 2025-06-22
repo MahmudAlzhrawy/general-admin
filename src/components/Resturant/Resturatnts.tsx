@@ -29,7 +29,6 @@ export default function Restaurants() {
                             cusineType,
                             restaurantImage,
                             status,
-                            cityCode,
                             restaurantDescription,
                             deliveryFee,
                         } = rest;

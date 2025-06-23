@@ -27,7 +27,7 @@ useEffect(() => {
                 <Loading tex="Schools" />
             ) : school.length === 0 ? (
                 <div className="text-center text-gray-500 text-lg font-medium mt-12">
-                    لا توجد مدارس حالياً.
+                    No schools Found
                 </div>
             ) : (
                 <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

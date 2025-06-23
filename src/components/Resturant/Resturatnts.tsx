@@ -7,7 +7,7 @@ import { FaUtensils } from "react-icons/fa";
 import AddRestaurant from "./AddResto";
 
 export default function Restaurants() {
-    const { resto, removeResto,setRestoFilter,setCounter,Cities } = useContext(RestoHosShcoContext);
+    const { resto, removeResto, setRestoFilter, setCounter, Cities } = useContext(RestoHosShcoContext);
     const [open, setOpen] = useState(false);
 
     const handleAddRestaurant = () => {
@@ -18,7 +18,14 @@ export default function Restaurants() {
         <div className="relative p-8 min-h-screen bg-gradient-to-b from-white to-blue-50">
             <h1 className="text-4xl font-bold text-center mb-8 text-blue-800">Restaurants</h1>
 
-            {resto.length > 0 ? (
+            {/* حالة تحميل البيانات */}
+            {resto === undefined || resto === null ? (
+                <Loading tex="Restaurants" />
+            ) : resto.length === 0 ? (
+                <div className="text-center text-gray-500 text-lg font-medium mt-12">
+                    لا توجد مطاعم حالياً.
+                </div>
+            ) : (
                 <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {resto.map((rest) => {
                         const {
@@ -61,13 +68,7 @@ export default function Restaurants() {
                         );
                     })}
                 </ul>
-            ) : resto === undefined || resto === null ? (
-                <Loading tex="Restaurants" />
-            ):(
-            <div className="text-center text-gray-500 text-lg font-medium mt-12">
-                Restaurants not Found
-            </div>  )
-        }
+            )}
 
             {/* زر إضافة مطعم */}
             <button
@@ -80,24 +81,25 @@ export default function Restaurants() {
 
             {/* نافذة إضافة مطعم */}
             {open && <AddRestaurant setOpen={setOpen} />}
-            <div className="fixed top-10  right-10 w-72 bg-white/15 border border-blue-200 shadow-xl rounded-xl p-6 z-10">
-            <h2 className="text-xl font-semibold text-blue-700 mb-4">Filter Restaurants</h2>
-            
-            <select
-                onChange={(e) => {
-                setRestoFilter(e.target.value);
-                setCounter((prev) => prev + 1);
-                }}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
-            >
-                <option value="">Select a governorate</option>
-                {Cities.map((gov) => (
-                <option key={gov.cityName} value={gov.cityCode}>
-                    {gov.cityName}
-                </option>
-                ))}
-            </select>
-        </div>
+
+            {/* فلترة حسب المحافظة */}
+            <div className="fixed top-10 right-10 w-72 bg-white/15 border border-blue-200 shadow-xl rounded-xl p-6 z-10">
+                <h2 className="text-xl font-semibold text-blue-700 mb-4">Filter Restaurants</h2>
+                <select
+                    onChange={(e) => {
+                        setRestoFilter(e.target.value);
+                        setCounter((prev) => prev + 1);
+                    }}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
+                >
+                    <option value="">Select a governorate</option>
+                    {Cities.map((gov) => (
+                        <option key={gov.cityName} value={gov.cityCode}>
+                            {gov.cityName}
+                        </option>
+                    ))}
+                </select>
+            </div>
         </div>
     );
 }

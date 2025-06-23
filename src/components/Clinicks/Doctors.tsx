@@ -2,13 +2,14 @@
 import Loading from "@/app/loading";
 import { ManageClinicsContext } from "@/Context/ClinicContext";
 import Card from "@/Ui/Card";
-import { useContext,useState } from "react";
+import { useContext, useState } from "react";
 import { FaUserPlus } from "react-icons/fa6";
 import AddDoctors from "./AddDoctors";
 
 export default function Doctors() {
     const { doctors, removeDoctor } = useContext(ManageClinicsContext);
-const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(false);
+
     const handleAddDoctor = () => {
         setOpen(true);
     };
@@ -17,8 +18,14 @@ const [open, setOpen] = useState(false);
         <div className="relative p-8 min-h-screen bg-gradient-to-b from-white to-blue-50">
             <h1 className="text-4xl font-bold text-center mb-8 text-blue-800">Our Doctors</h1>
 
-            {doctors.length > 0 ? (
-                <>
+            {/* ✅ التحقق من البيانات */}
+            {doctors === undefined || doctors === null ? (
+                <Loading tex="Doctors" />
+            ) : doctors.length === 0 ? (
+                <div className="text-center text-gray-500 text-lg font-medium mt-12">
+                    No doctors found.
+                </div>
+            ) : (
                 <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {doctors.map((doctor) => {
                         const {
@@ -32,7 +39,10 @@ const [open, setOpen] = useState(false);
                         } = doctor;
 
                         return (
-                            <Card key={doctorId} className="bg-white shadow-lg rounded-xl p-4 hover:shadow-xl transition-shadow duration-300">
+                            <Card
+                                key={doctorId}
+                                className="bg-white shadow-lg rounded-xl p-4 hover:shadow-xl transition-shadow duration-300"
+                            >
                                 <li className="list-none flex flex-col items-center text-center">
                                     <img
                                         src={`https://citypulse.runasp.net${profileImage}`}
@@ -57,16 +67,9 @@ const [open, setOpen] = useState(false);
                         );
                     })}
                 </ul>
-                </>
-            ) : doctors === undefined || doctors === null ? (
-                            <Loading tex="Doctors" />
-                        ):(
-                        <div className="text-center text-gray-500 text-lg font-medium mt-12">
-                            Doctors not Found
-                        </div>  )
-                        }
+            )}
 
-            {/* 🔵 زر إضافة دكتور عائم */}
+            {/* 🔵 زر إضافة دكتور */}
             <button
                 onClick={handleAddDoctor}
                 className="fixed bottom-6 right-6 animate-pulse bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 flex items-center justify-center z-50"
@@ -74,10 +77,9 @@ const [open, setOpen] = useState(false);
             >
                 <FaUserPlus className="text-xl" />
             </button>
-            {/* 🔵 هنا يمكن إضافة مكون إضافة دكتور */}
-            {open &&
-            <AddDoctors setOpen={setOpen}/>
-            }
+
+            {/* 🔵 نافذة إضافة دكتور */}
+            {open && <AddDoctors setOpen={setOpen} />}
         </div>
     );
 }

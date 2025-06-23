@@ -4,10 +4,10 @@ import { RestoHosShcoContext } from "@/Context/resto_hos_shco_Context";
 import Card from "@/Ui/Card";
 import { useContext, useState } from "react";
 import { FaSchool } from "react-icons/fa";
-import AddSchool from "./Addschool"; // تأكد من أنك أنشأت هذا المكون
+import AddSchool from "./Addschool";
 
 export default function Schools() {
-    const { school, removeSchool,setCounter,setSchoolFilter,Cities } = useContext(RestoHosShcoContext);
+    const { school, removeSchool, setCounter, setSchoolFilter, Cities } = useContext(RestoHosShcoContext);
     const [open, setOpen] = useState(false);
 
     const handleAddSchool = () => {
@@ -18,7 +18,14 @@ export default function Schools() {
         <div className="relative p-8 min-h-screen bg-gradient-to-b from-white to-blue-50">
             <h1 className="text-4xl font-bold text-center mb-8 text-blue-800">Schools</h1>
 
-            {school.length > 0 ? (
+            {/* التحقق من وجود البيانات */}
+            {school === undefined || school === null ? (
+                <Loading tex="Schools" />
+            ) : school.length === 0 ? (
+                <div className="text-center text-gray-500 text-lg font-medium mt-12">
+                    لا توجد مدارس حالياً.
+                </div>
+            ) : (
                 <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {school.map((school) => {
                         const {
@@ -67,13 +74,7 @@ export default function Schools() {
                         );
                     })}
                 </ul>
-            ) : school === undefined || school === null ? (
-                            <Loading tex="Schools" />
-                        ):(
-                        <div className="text-center text-gray-500 text-lg font-medium mt-12">
-                            Schools not Found
-                        </div>  )
-                    }
+            )}
 
             {/* زر إضافة مدرسة */}
             <button
@@ -86,24 +87,26 @@ export default function Schools() {
 
             {/* نافذة إضافة مدرسة */}
             {open && <AddSchool setOpen={setOpen} />}
-            <div className="fixed top-10  right-10 w-72 bg-white/15 border border-blue-200 shadow-xl rounded-xl p-6 z-10">
-            <h2 className="text-xl font-semibold text-blue-700 mb-4">Filter Schools</h2>
-            
-            <select
-                onChange={(e) => {
-                setSchoolFilter(e.target.value);
-                setCounter((prev) => prev + 1);
-                }}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
-            >
-                <option value="">Select a governorate</option>
-                {Cities.map((gov) => (
-                <option key={gov.cityName} value={gov.cityCode}>
-                    {gov.cityName}
-                </option>
-                ))}
-            </select>
-        </div>
+
+            {/* فلتر المدارس حسب المحافظة */}
+            <div className="fixed top-10 right-10 w-72 bg-white/15 border border-blue-200 shadow-xl rounded-xl p-6 z-10">
+                <h2 className="text-xl font-semibold text-blue-700 mb-4">Filter Schools</h2>
+
+                <select
+                    onChange={(e) => {
+                        setSchoolFilter(e.target.value);
+                        setCounter((prev) => prev + 1);
+                    }}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
+                >
+                    <option value="">Select a governorate</option>
+                    {Cities.map((gov) => (
+                        <option key={gov.cityName} value={gov.cityCode}>
+                            {gov.cityName}
+                        </option>
+                    ))}
+                </select>
+            </div>
         </div>
     );
 }

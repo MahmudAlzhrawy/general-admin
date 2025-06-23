@@ -4,10 +4,10 @@ import { RestoHosShcoContext } from "@/Context/resto_hos_shco_Context";
 import Card from "@/Ui/Card";
 import { useContext, useState } from "react";
 import { FaHospital } from "react-icons/fa";
-import AddHospital from "./Addhospital"; // تأكد من إنشاء هذا الملف
+import AddHospital from "./Addhospital";
 
 export default function Hospitals() {
-    const { hospital, removeHospital,setHospitalFilter,setCounter ,Cities} = useContext(RestoHosShcoContext);
+    const { hospital, removeHospital, setHospitalFilter, setCounter, Cities } = useContext(RestoHosShcoContext);
     const [open, setOpen] = useState(false);
 
     const handleAddHospital = () => {
@@ -18,7 +18,14 @@ export default function Hospitals() {
         <div className="relative p-8 min-h-screen bg-gradient-to-b from-white to-blue-50">
             <h1 className="text-4xl font-bold text-center mb-8 text-blue-800">Hospitals</h1>
 
-            {hospital.length > 0 ? (
+            {/* حالة التحميل */}
+            {hospital === undefined || hospital === null ? (
+                <Loading tex="Hospitals" />
+            ) : hospital.length === 0 ? (
+                <div className="text-center text-gray-500 text-lg font-medium mt-12">
+                    لا توجد مستشفيات حالياً.
+                </div>
+            ) : (
                 <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {hospital.map((hospital) => {
                         const {
@@ -67,13 +74,7 @@ export default function Hospitals() {
                         );
                     })}
                 </ul>
-            ) : hospital === undefined || hospital === null ? (
-                            <Loading tex="Hopitals" />
-                        ):(
-                        <div className="text-center text-gray-500 text-lg font-medium mt-12">
-                            Hospitals not Found
-                        </div>  )
-            }
+            )}
 
             {/* زر إضافة مستشفى */}
             <button
@@ -86,25 +87,25 @@ export default function Hospitals() {
 
             {/* نافذة إضافة مستشفى */}
             {open && <AddHospital setOpen={setOpen} />}
-             {/* Hospital Filter by Governorate */}
-            <div className="fixed top-10  right-10 w-72 bg-white/15 border border-blue-200 shadow-xl rounded-xl p-6 z-10">
-            <h2 className="text-xl font-semibold text-blue-700 mb-4">Filter Hospitals</h2>
-            
-            <select
-                onChange={(e) => {
-                setHospitalFilter(e.target.value);
-                setCounter((prev) => prev + 1);
-                }}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
-            >
-                <option value="">Select a governorate</option>
-                {Cities.map((gov) => (
-                <option key={gov.cityName} value={gov.cityCode}>
-                    {gov.cityName}
-                </option>
-                ))}
-            </select>
-        </div>
+
+            {/* فلترة المستشفيات حسب المحافظة */}
+            <div className="fixed top-10 right-10 w-72 bg-white/15 border border-blue-200 shadow-xl rounded-xl p-6 z-10">
+                <h2 className="text-xl font-semibold text-blue-700 mb-4">Filter Hospitals</h2>
+                <select
+                    onChange={(e) => {
+                        setHospitalFilter(e.target.value);
+                        setCounter((prev) => prev + 1);
+                    }}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
+                >
+                    <option value="">Select a governorate</option>
+                    {Cities.map((gov) => (
+                        <option key={gov.cityName} value={gov.cityCode}>
+                            {gov.cityName}
+                        </option>
+                    ))}
+                </select>
+            </div>
         </div>
     );
 }

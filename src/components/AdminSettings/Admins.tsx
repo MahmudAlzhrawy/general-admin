@@ -49,9 +49,14 @@ export default function Admins() {
                         );
                     })}
                 </ul>
-            ) : (
-                <Loading tex="Admins" />
-            )}
+            ) : Admins === undefined || Admins === null ? (
+                            <Loading tex="Admins" />
+                        ):(
+                        <div className="text-center text-gray-500 text-lg font-medium mt-12">
+                            Admins not Found
+                        </div>  )
+                    
+            }
 
             {/* زر إضافة أدمن */}
             <div>

@@ -59,9 +59,14 @@ import AddClinic from "./AddClinic";
                 );
             })}
             </ul>
-        ) : (
-            <Loading tex="Clinics" />
-        )}
+        ) : clinics === undefined || clinics === null ? (
+                        <Loading tex="Clinics" />
+                    ):(
+                    <div className="text-center text-gray-500 text-lg font-medium mt-12">
+                        Clinics not Found
+                    </div>  )
+        
+        }
         {/*Add Clinic Button*/}
     <div className="mt-8 fixed bottom-10  right-6 flex justify-end">
             <button

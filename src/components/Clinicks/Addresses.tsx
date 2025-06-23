@@ -53,9 +53,13 @@ import AddAddresses from "./AddAddresse";
                 );
             })}
             </ul>
-        ) : (
-            <Loading tex="Addresses" />
-        )}
+        ) : addresses=== undefined || addresses=== null ? (
+                        <Loading tex="Addresses" />
+                    ):(
+                    <div className="text-center text-gray-500 text-lg font-medium mt-12">
+                        Addresses not Found
+                    </div>  )
+        }
         {/*Add Address Button*/}
             <div className="fixed bottom-10 right-5  mt-8 text-center">
                 <button

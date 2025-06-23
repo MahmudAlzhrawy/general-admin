@@ -67,9 +67,13 @@ export default function Schools() {
                         );
                     })}
                 </ul>
-            ) : (
-                <Loading tex="Schools" />
-            )}
+            ) : school === undefined || school === null ? (
+                            <Loading tex="Schools" />
+                        ):(
+                        <div className="text-center text-gray-500 text-lg font-medium mt-12">
+                            Schools not Found
+                        </div>  )
+                    }
 
             {/* زر إضافة مدرسة */}
             <button

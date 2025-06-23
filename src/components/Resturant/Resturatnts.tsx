@@ -61,9 +61,13 @@ export default function Restaurants() {
                         );
                     })}
                 </ul>
-            ) : (
+            ) : resto === undefined || resto === null ? (
                 <Loading tex="Restaurants" />
-            )}
+            ):(
+            <div className="text-center text-gray-500 text-lg font-medium mt-12">
+                Restaurants not Found
+            </div>  )
+        }
 
             {/* زر إضافة مطعم */}
             <button

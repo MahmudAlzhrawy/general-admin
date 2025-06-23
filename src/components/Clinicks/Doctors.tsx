@@ -58,9 +58,13 @@ const [open, setOpen] = useState(false);
                     })}
                 </ul>
                 </>
-            ) : (
-                <Loading tex="Doctors" />
-            )}
+            ) : doctors === undefined || doctors === null ? (
+                            <Loading tex="Doctors" />
+                        ):(
+                        <div className="text-center text-gray-500 text-lg font-medium mt-12">
+                            Doctors not Found
+                        </div>  )
+                        }
 
             {/* 🔵 زر إضافة دكتور عائم */}
             <button

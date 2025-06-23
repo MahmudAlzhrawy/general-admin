@@ -67,9 +67,13 @@ export default function Hospitals() {
                         );
                     })}
                 </ul>
-            ) : (
-                <Loading tex="Hospitals" />
-            )}
+            ) : hospital === undefined || hospital === null ? (
+                            <Loading tex="Hopitals" />
+                        ):(
+                        <div className="text-center text-gray-500 text-lg font-medium mt-12">
+                            Hospitals not Found
+                        </div>  )
+            }
 
             {/* زر إضافة مستشفى */}
             <button

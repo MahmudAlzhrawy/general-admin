@@ -2,14 +2,18 @@
 import Loading from "@/app/loading";
 import { ManageClinicsContext } from "@/Context/ClinicContext";
 import Card from "@/Ui/Card";
-import { useContext, useState } from "react";
+import { useContext, useState,useEffect } from "react";
 import { FaUserPlus } from "react-icons/fa6";
 import AddDoctors from "./AddDoctors";
 
 export default function Doctors() {
-    const { doctors, removeDoctor } = useContext(ManageClinicsContext);
+    const { doctors, removeDoctor,setCounter } = useContext(ManageClinicsContext);
     const [open, setOpen] = useState(false);
-
+useEffect(() => {
+    if (!doctors || doctors.length === 0) {
+    setCounter((prev) => prev + 1); // ⬅️ هذا يجبر السياق على جلب البيانات
+    }
+}, []);
     const handleAddDoctor = () => {
         setOpen(true);
     };

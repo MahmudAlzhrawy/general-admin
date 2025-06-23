@@ -2,14 +2,18 @@
 import Loading from "@/app/loading";
 import { ManageClinicsContext } from "@/Context/ClinicContext";
 import Card from "@/Ui/Card";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaClinicMedical } from "react-icons/fa";
 import AddClinic from "./AddClinic";
 
 export default function Clinics() {
-    const { clinics, removeClinic } = useContext(ManageClinicsContext);
+    const { clinics, removeClinic,setCounter } = useContext(ManageClinicsContext);
     const [open, setOpen] = useState(false);
-
+useEffect(() => {
+    if (!clinics || clinics.length === 0) {
+    setCounter((prev) => prev + 1); // ⬅️ هذا يجبر السياق على جلب البيانات
+    }
+}, []);
     return (
         <div className="p-8 min-h-screen bg-gradient-to-b from-white to-blue-50">
             <h1 className="text-4xl font-bold text-center mb-8 text-blue-800">Our Clinics</h1>

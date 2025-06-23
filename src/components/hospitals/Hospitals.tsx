@@ -2,14 +2,18 @@
 import Loading from "@/app/loading";
 import { RestoHosShcoContext } from "@/Context/resto_hos_shco_Context";
 import Card from "@/Ui/Card";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaHospital } from "react-icons/fa";
 import AddHospital from "./Addhospital";
 
 export default function Hospitals() {
     const { hospital, removeHospital, setHospitalFilter, setCounter, Cities } = useContext(RestoHosShcoContext);
     const [open, setOpen] = useState(false);
-
+useEffect(() => {
+    if (!hospital || hospital.length === 0) {
+    setCounter((prev) => prev + 1); // ⬅️ هذا يجبر السياق على جلب البيانات
+    }
+}, []);
     const handleAddHospital = () => {
         setOpen(true);
     };

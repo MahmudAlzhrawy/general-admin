@@ -2,14 +2,18 @@
 import Loading from "@/app/loading";
 import { RestoHosShcoContext } from "@/Context/resto_hos_shco_Context";
 import Card from "@/Ui/Card";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaSchool } from "react-icons/fa";
 import AddSchool from "./Addschool";
 
 export default function Schools() {
     const { school, removeSchool, setCounter, setSchoolFilter, Cities } = useContext(RestoHosShcoContext);
     const [open, setOpen] = useState(false);
-
+useEffect(() => {
+    if (!school || school.length === 0) {
+    setCounter((prev) => prev + 1); // ⬅️ هذا يجبر السياق على جلب البيانات
+    }
+}, []);
     const handleAddSchool = () => {
         setOpen(true);
     };

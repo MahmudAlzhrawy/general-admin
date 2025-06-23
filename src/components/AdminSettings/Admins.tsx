@@ -1,5 +1,5 @@
 "use client";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { RestoHosShcoContext } from "@/Context/resto_hos_shco_Context";
 import Card from "@/Ui/Card";
 import Loading from "@/app/loading";
@@ -11,7 +11,11 @@ export default function Admins() {
     const { Admins, removeAdmin, setAdminFilter, setAdCounter } = useContext(RestoHosShcoContext);
     const [open, setOpen] = useState(false);
     const [openMake, setOpenMake] = useState(false);
-
+useEffect(() => {
+    if (!Admins || Admins.length === 0) {
+    setAdCounter((prev) => prev + 1); // ⬅️ هذا يجبر السياق على جلب البيانات
+    }
+}, []);
     const handleAddAdmin = () => setOpen(true);
     const handleMakeAdmin = () => setOpenMake(true);
 

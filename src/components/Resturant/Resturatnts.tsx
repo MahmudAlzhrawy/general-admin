@@ -2,14 +2,18 @@
 import Loading from "@/app/loading";
 import { RestoHosShcoContext } from "@/Context/resto_hos_shco_Context";
 import Card from "@/Ui/Card";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaUtensils } from "react-icons/fa";
 import AddRestaurant from "./AddResto";
 
 export default function Restaurants() {
     const { resto, removeResto, setRestoFilter, setCounter, Cities } = useContext(RestoHosShcoContext);
     const [open, setOpen] = useState(false);
-
+useEffect(() => {
+    if (!resto || resto.length === 0) {
+    setCounter((prev) => prev + 1); // ⬅️ هذا يجبر السياق على جلب البيانات
+    }
+}, []);
     const handleAddRestaurant = () => {
         setOpen(true);
     };

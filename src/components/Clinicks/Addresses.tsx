@@ -2,14 +2,18 @@
 import Loading from "@/app/loading";
 import { ManageClinicsContext } from "@/Context/ClinicContext";
 import Card from "@/Ui/Card";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { MdAddLocation } from "react-icons/md";
 import AddAddresses from "./AddAddresse";
 
 export default function Addresses() {
     const { addresses, removeAddress, setAddressFilter, setCounter } = useContext(ManageClinicsContext);
     const [open, setOpen] = useState(false);
-
+useEffect(() => {
+        if (!addresses || addresses.length === 0) {
+        setCounter((prev) => prev + 1); // ⬅️ هذا يجبر السياق على جلب البيانات
+        }
+}, []);
     const egyptGovernoratesEn = [
         "Cairo", "Giza", "Alexandria", "Dakahlia", "Red Sea", "Beheira", "Fayoum", "Gharbia", "Ismailia",
         "Menoufia", "Minya", "Qalyubia", "New Valley", "Suez", "Aswan", "Assiut", "Beni Suef", "Port Said",

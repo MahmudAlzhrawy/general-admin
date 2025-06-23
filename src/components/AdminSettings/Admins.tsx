@@ -12,6 +12,7 @@ export default function Admins() {
     const [open, setOpen] = useState(false);
     const [openMake, setOpenMake] = useState(false);
 useEffect(() => {
+    setAdminFilter('RestuarantStaff')
     if (!Admins || Admins.length === 0) {
     setAdCounter((prev) => prev + 1); // ⬅️ هذا يجبر السياق على جلب البيانات
     }
@@ -92,7 +93,6 @@ useEffect(() => {
                     }}
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
                 >
-                    <option value="">Select Admin Type</option>
                     <option value="RestuarantStaff">Restaurant Owner</option>
                     <option value="ClinicStaff">Clinic Admin</option>
                 </select>

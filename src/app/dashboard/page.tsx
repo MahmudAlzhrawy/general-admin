@@ -12,7 +12,7 @@ return (
             <div className="sidebar custom-scroll text-white w-1/4 ">
                 <SideBar/>
             </div>
-            <div className="content grow custom-scroll bg-white/20">
+            <div className="content  grow custom-scroll  bg-white/20">
                 <Content/>
             </div>
         </div>

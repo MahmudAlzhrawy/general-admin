@@ -19,8 +19,8 @@ useEffect(() => {
     };
 
     return (
-        <div className="relative p-8 min-h-screen bg-gradient-to-b from-white to-blue-50">
-            <h1 className="text-4xl font-bold text-center mb-8 text-blue-800">Our Doctors</h1>
+ <div className="relative p-8 min-h-screen bg-gradient-to-b from-white to-blue-50">
+        <h1 className="text-4xl font-bold text-center mb-8 text-blue-800">Our Doctors</h1>
 
             {/* ✅ التحقق من البيانات */}
             {doctors === undefined || doctors === null ? (

@@ -95,7 +95,10 @@ interface MakeAdmen{
     userName:string,
     adminType:string
 }
-
+interface addDepart{
+    hospitalId:number,
+    departmentName:string
+}
 interface ContextProps {
     Admins:Admin[];
     Restaurants:Restaurants[];
@@ -120,12 +123,14 @@ interface ContextProps {
     removeHospital: (hospitalId: number) => void;
     removeSchool: (schoolId: number) => void;
     removeAdmin:(id:number)=>void,
+    assigenDepToHos:(data:addDepart)=>void,
     setRestoFilter:Dispatch<SetStateAction<string>>;
     setHospitalFilter:Dispatch<SetStateAction<string>>;
     setSchoolFilter:Dispatch<SetStateAction<string>>;
     setAdminFilter:Dispatch<SetStateAction<string>>,
     setCounter: Dispatch<SetStateAction<number>>;
     setAdCounter:Dispatch<SetStateAction<number>>;
+
 }
 
 export const RestoHosShcoContext = createContext<ContextProps>({
@@ -157,8 +162,8 @@ export const RestoHosShcoContext = createContext<ContextProps>({
     setSchoolFilter: () => {},
     setAdminFilter:()=>{},
     setCounter: () => {},
-    setAdCounter:()=>{}
-
+    setAdCounter:()=>{},
+    assigenDepToHos:()=>{}
 });
 interface RestoHosShcoProviderProps {
     children: React.ReactNode;
@@ -538,9 +543,32 @@ const removeAdmin =async(id:number)=>{
             })
         }
 }
+const assigenDepToHos=async(data:addDepart)=>{
+    const res =await fetch(`https://citypulse.runasp.net/api/AdminInstitution/add-department?hospitalId=${data.hospitalId}&departmentName=${data.departmentName}`,{
+    method:"POST",
+    headers:{
+                "Authorization": `Bearer ${adminToken}`,
+            }
+        })
+        if(res.ok){
+            Toast.fire({
+                icon:'success',
+                title:"Add DepartMent successfully"
+            })
+        }
+        else{
+            Toast.fire({
+                icon:'error',
+                title:"Add department Failed"
+            })
+        }
+    
+
+}
 
     return (
         <RestoHosShcoContext.Provider value={{
+            assigenDepToHos,
             MakeAdmin,
             Admins,
             Restaurants,

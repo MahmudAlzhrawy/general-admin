@@ -34,7 +34,7 @@ useEffect(() => {
             ) : (
                 <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {Admins.map((admin) => {
-                        const { id, userId, serviceId, serviceName } = admin;
+                        const { id, userId, serviceId, serviceName,endDate } = admin;
                         return (
                             <Card
                                 key={id}
@@ -46,6 +46,7 @@ useEffect(() => {
                                     <p className="text-sm text-gray-700">User ID: {userId}</p>
                                     <p className="text-sm text-blue-700">Service ID: {serviceId}</p>
                                     <p className="text-sm text-gray-600">Service Name: {serviceName}</p>
+                                     <p className="text-sm text-blue-700">EndDate: {endDate}</p>
                                 </li>
                                 <div className="mt-4 flex justify-center">
                                     <button
@@ -84,7 +85,7 @@ useEffect(() => {
             {open && <AddAdmin setOpen={setOpen} />}
 
             {/* ✅ فلتر الأدمنات */}
-            <div className="fixed top-10 right-10 w-72 bg-white/15 border border-blue-200 shadow-xl rounded-xl p-6 z-10">
+            <div className="fixed top-10 right-10 w-72 bg-white/30 backdrop-blur-lg border border-blue-200 shadow-xl rounded-xl p-6 z-10">
                 <h2 className="text-xl font-semibold text-blue-700 mb-4">Filter Admins</h2>
                 <select
                     onChange={(e) => {

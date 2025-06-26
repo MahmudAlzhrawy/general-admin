@@ -93,7 +93,7 @@ useEffect(() => {
             {open && <AddSchool setOpen={setOpen} />}
 
             {/* فلتر المدارس حسب المحافظة */}
-            <div className="fixed top-10 right-10 w-72 bg-white/15 border border-blue-200 shadow-xl rounded-xl p-6 z-10">
+            <div className="fixed top-10 right-10 w-72 bg-white/15 backdrop-blur border border-blue-200 shadow-xl rounded-xl p-6 z-10">
                 <h2 className="text-xl font-semibold text-blue-700 mb-4">Filter Schools</h2>
 
                 <select

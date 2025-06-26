@@ -84,12 +84,14 @@ interface Admin{
     id:number,
     userId:number,
     serviceId:number,
-    serviceName:string
+    serviceName:string,
+    endDate:string
 }
 interface AddAdmin{
     userId:number,
     serviceId:number,
     serviceName:string
+    endDate:Date
 }
 interface MakeAdmen{
     userName:string,
@@ -457,7 +459,8 @@ const AddAdmin =async(admin:AddAdmin)=>{
     if(!adminToken){
             return console.log("token not brovided !")
         }
-    const res = await fetch(`https://citypulse.runasp.net/api/Admin/AssignAdminToService?userId=${admin.userId}&serviceId=${admin.serviceId}&serviceName=${admin.serviceName}`, {
+            const formattedDate = admin.endDate.toISOString();
+    const res = await fetch(`https://citypulse.runasp.net/api/Admin/AssignAdminToService?userId=${admin.userId}&serviceId=${admin.serviceId}&serviceName=${admin.serviceName}&endDate=${formattedDate}`, {
                 method: "POST",
                 headers: {
                     "Authorization": `Bearer ${adminToken}`,

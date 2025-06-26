@@ -3,7 +3,6 @@ import { FaClinicMedical } from "react-icons/fa";       // عيادات طبية
 import { GiForkKnifeSpoon } from "react-icons/gi";      // مطاعم
 import { FaSchool } from "react-icons/fa";              // مدارس
 import { FaHospitalAlt } from "react-icons/fa";         // مستشفيات
-import { HiOutlineDocumentReport } from "react-icons/hi"; // ريبورت (تقارير)
 import { FiSettings } from "react-icons/fi";            // إعدادات
 import { FiLogOut } from "react-icons/fi";   
 import { TiChevronRightOutline } from "react-icons/ti";
@@ -102,13 +101,6 @@ const handleToggleClinic = () => {
                         } >
                         <span className={`${showHospitals &&"text-black font-bold"}`}>
                             <FaHospitalAlt className={`${showHospitals?"text-black  inline-block text-2xl mr-2 items-center ":"text-white  inline-block text-2xl mr-2 items-center "}`}  />Hospitals
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span>
-                            <HiOutlineDocumentReport className="inline-block text-2xl mr-2 items-center text-white" />Report
                         </span>
                     </a>
                 </li>

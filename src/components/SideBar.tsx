@@ -34,7 +34,7 @@ const handleToggleClinic = () => {
 
 
     return (
-        <div className="sidebar relative pb-2 bg-black/80 text-white  min-h-screen py-4">
+        <div className="sidebar w-full relative pb-2 bg-black/80 text-white  min-h-screen py-4">
             <h2 className="text-4xl font-serif text-gray-200 pb-10 text-center font-bold ">Dashboard</h2>
             <hr className="h-.5 bg-blue-500/50 border-transparent"/>
             <ul className="h-[95%] mb-10   relative flex flex-col "> 

@@ -9,7 +9,7 @@ return (
     <ManageClinicsProvider>
         <RestoHosShcoProvider>
         <div className="dashboard flex max-h-screen overflow-hidden">
-            <div className="sidebar custom-scroll text-white w-1/4 ">
+            <div className="sidebar custom-scroll text-white min-w-1/4 ">
                 <SideBar/>
             </div>
             <div className="content  grow custom-scroll  bg-white/20">

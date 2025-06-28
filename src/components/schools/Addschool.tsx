@@ -39,7 +39,7 @@ export default function AddSchool({ setOpen }: { setOpen: Dispatch<SetStateActio
                 SchoolType: values.schoolType,
                 CityCode: values.cityCode,
                 SchoolImage: values.schoolImage,
-                SchoolDescription: values.schoolDescription,
+                Description: values.schoolDescription,
                 OpeningHours: values.openingHours,
                 Website: values.website,
             });

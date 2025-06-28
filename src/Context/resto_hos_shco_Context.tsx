@@ -67,7 +67,7 @@ Location: string;
 PhoneNumber: string;
 SchoolImage: File|null;
 SchoolType: string;
-SchoolDescription: string;
+Description: string;
 CityCode: string;
 OpeningHours: string;
 Website: string;
@@ -380,7 +380,7 @@ useEffect(()=>{
     formData.append('phoneNumber', newSchool.PhoneNumber);
     formData.append('schoolImage', newSchool.SchoolImage!);
     formData.append('schoolType', newSchool.SchoolType);
-    formData.append('schoolDescription', newSchool.SchoolDescription);
+    formData.append('Description', newSchool.Description);
     formData.append('cityCode', newSchool.CityCode);
     formData.append('openingHours', newSchool.OpeningHours);
     formData.append('website', newSchool.Website);
